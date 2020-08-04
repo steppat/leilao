@@ -7,6 +7,7 @@ import java.math.BigDecimal;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 public class AvaliadorTest {
 
@@ -45,6 +46,8 @@ public class AvaliadorTest {
 
 	@Test
 	public void deveEntenderLancesEmOrdemCrescente() {
+		
+		System.out.println(new BCryptPasswordEncoder().encode("pass"));
 
 		Leilao leilao = new CriadorDeLeilao().para("Playstation 3 Novo").lance(joao, valor250).lance(jose, valor300)
 				.lance(maria, valor400).constroi();
