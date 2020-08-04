@@ -1,7 +1,6 @@
 package br.com.alura.leilao.controller;
 
 import static org.hamcrest.Matchers.containsString;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -34,7 +33,6 @@ public class LeiloesControllerTest extends BaseTest {
 	public void verificaSePaginaDeLeiloesCarrega() throws Exception {
 		mockMvc.perform(MockMvcRequestBuilders.get("/leiloes"))
 				.andExpect(status().isOk())
-				.andDo(print())
 				.andExpect(content().string(containsString("Todos leilões")));
 	}
 	

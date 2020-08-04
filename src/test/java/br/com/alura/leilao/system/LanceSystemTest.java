@@ -21,7 +21,6 @@ public class LanceSystemTest extends SystemTestBase{
 	
     @Test
     public void deveAceitarUmLance() {
-
 		LoginPage loginPage = new LoginPage(getDriver());
 		this.leiloesPage = loginPage.realizaLogin();
 		DetalhesDoLeilaoPage detalhesLeilaoPage = leiloesPage.visitaLeilaoPaginaParaDarLance();

@@ -10,7 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-class SystemTestBase {
+public class SystemTestBase {
 
 	private static WebDriver driver;
 

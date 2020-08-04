@@ -25,9 +25,7 @@ public class LeiloesSystemTest extends SystemTestBase{
 
 	@Test
 	public void deveCadastrarUmLeilao() {
-		
 		NovoLeilaoPage novoLeilaoPage = leiloesPage.visitaPaginaParaCriarUmNovoLeilao();
-		
 		String nome = "Comodore Amiga";
 		double valor = 899.9;
 		String data = "04/08/2020";
@@ -40,7 +38,6 @@ public class LeiloesSystemTest extends SystemTestBase{
 	
 	@Test
 	public void deveEditarUmLeilao() {
-		
 		AlterarLeilaoPage novoLeilaoPage = leiloesPage.visitaPaginaParaAltearLeilao();
 		String nome = "Comodore Amiga";
 		double valor = 899.9;

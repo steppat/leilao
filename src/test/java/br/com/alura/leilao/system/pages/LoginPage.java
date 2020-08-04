@@ -16,7 +16,6 @@ public class LoginPage {
     }
 
     public LeiloesPage realizaLoginCom(String nome, String senha) {
-    	
     	driver.get(URL_LOGIN_PAGE);
 
         WebElement txtNome = driver.findElement(By.name("username"));
@@ -28,10 +27,13 @@ public class LoginPage {
         txtNome.submit();
                 
         return new LeiloesPage(driver);
-
     }
     
     public LeiloesPage realizaLogin() {
     	return realizaLoginCom("fulano", "pass");
     }
+
+	public boolean estaNaPaginaDeLeiloes() {
+		return this.driver.getCurrentUrl().endsWith("/leiloes");
+	}
 }

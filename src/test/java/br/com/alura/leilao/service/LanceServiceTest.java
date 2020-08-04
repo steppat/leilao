@@ -53,9 +53,6 @@ public class LanceServiceTest {
 
 	@BeforeEach
 	public void setUp() {
-		
-		System.out.println("eachhh");
-		
 		long leilaoId = 1l;
 		lanceDto = new NovoLanceDto();
 		lanceDto.setLeilaoId(leilaoId);

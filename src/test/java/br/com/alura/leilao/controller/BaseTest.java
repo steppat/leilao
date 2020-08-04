@@ -37,7 +37,6 @@ public class BaseTest {
 	
 	public Leilao geraLeilao(String nome, BigDecimal valor, LocalDate data, Usuario usuario) {
 		return new Leilao(nome, valor, usuario);
-
 	}
 	
 	public Leilao getLeilaoTablet() {

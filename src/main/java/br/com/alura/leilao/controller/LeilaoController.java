@@ -36,7 +36,6 @@ public class LeilaoController {
 	
 	@GetMapping
 	public ModelAndView index(Principal principal) {
-		System.out.println(leiloes.findAll());
 		ModelAndView mv = new ModelAndView("leilao/index");
 		mv.addObject("leiloes", leiloes.findAll());
 		mv.addObject("usuarioLogado", principal);
