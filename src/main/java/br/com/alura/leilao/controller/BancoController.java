@@ -62,7 +62,6 @@ public class BancoController {
 		cigano.activa();
 		
 		Leilao leilaoTablet = new Leilao("Tablet Xpto 3",new BigDecimal("5.0"), fulano);
-		leilaoTablet.marcaComoUsado();
 		
 		Lance lance10 = new Lance(beltrano, BigDecimal.TEN);
 		Lance lance15 = new Lance(cigano, new BigDecimal("15.0"));

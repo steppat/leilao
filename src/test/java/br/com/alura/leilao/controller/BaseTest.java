@@ -1,4 +1,4 @@
-package br.com.alura.leilao.integration;
+package br.com.alura.leilao.controller;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -8,7 +8,7 @@ import java.util.List;
 import br.com.alura.leilao.model.Leilao;
 import br.com.alura.leilao.model.Usuario;
 
-class BaseTest {
+public class BaseTest {
 
 	public List<Usuario> getUsuariosFulanoEBeltrano() {
 		Usuario fulano = getUsuarioFulano();
@@ -47,7 +47,6 @@ class BaseTest {
 	
 	public Leilao getLeilaoComputador() {
 		Leilao leilao = new Leilao("Computador",new BigDecimal("530.0"), getUsuarioFulano());
-		leilao.marcaComoUsado();
 		return leilao;
 	}
 	

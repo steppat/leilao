@@ -31,14 +31,11 @@ public class NovoLeilaoDto {
 	@Pattern(regexp = "^\\d{2}/\\d{2}/\\d{4}$", message = "deve ser uma data no formato dd/MM/yyyy")
 	private String dataAbertura;
 
-	private boolean usado;
-
 	public NovoLeilaoDto(Leilao leilao) {
 		this.id = leilao.getId();
 		this.nome = leilao.getNome();
 		this.valorInicial = leilao.getValorInicial();
 		this.dataAbertura = leilao.getDataAbertura().format(ofPattern);
-		this.usado = leilao.isUsado();
 	}
 
 	public NovoLeilaoDto() {
@@ -68,14 +65,6 @@ public class NovoLeilaoDto {
 		this.valorInicial = valorInicial;
 	}
 
-	public boolean isUsado() {
-		return usado;
-	}
-
-	public void setUsado(boolean usado) {
-		this.usado = usado;
-	}
-	
 	public String getDataAbertura() {
 		return dataAbertura;
 	}
@@ -86,11 +75,8 @@ public class NovoLeilaoDto {
 
 	public Leilao toLeilao() {
 		LocalDate date = LocalDate.parse(this.dataAbertura, ofPattern);
-		Leilao leilao = new Leilao(nome, valorInicial, date, usado);
+		Leilao leilao = new Leilao(nome, valorInicial, date);
 		leilao.setId(id);
 		return leilao;
 	}
-
-	
-	
 }

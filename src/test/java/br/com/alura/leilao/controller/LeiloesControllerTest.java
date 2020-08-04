@@ -1,4 +1,4 @@
-package br.com.alura.leilao.integration;
+package br.com.alura.leilao.controller;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -13,19 +13,29 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import br.com.alura.leilao.repositories.LeilaoRepository;
+import br.com.alura.leilao.repositories.UsuarioRepository;
+
 @SpringBootTest
-@AutoConfigureMockMvc
-@ActiveProfiles("test")
-public class IndexControllerTest {
+@AutoConfigureMockMvc(addFilters = false)
+@ActiveProfiles("test") 
+public class LeiloesControllerTest extends BaseTest {
 
 	@Autowired
 	private MockMvc mockMvc;
+	
+	@Autowired
+	LeilaoRepository leiloes;
+	
+	@Autowired
+	UsuarioRepository usuarios;
 
 	@Test
-	public void verificaSePaginaIndexCarrega() throws Exception {
+	public void verificaSePaginaDeLeiloesCarrega() throws Exception {
 		mockMvc.perform(MockMvcRequestBuilders.get("/leiloes"))
 				.andExpect(status().isOk())
 				.andDo(print())
 				.andExpect(content().string(containsString("Todos leilões")));
 	}
+	
 }

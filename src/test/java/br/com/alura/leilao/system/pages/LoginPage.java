@@ -1,4 +1,4 @@
-package br.com.alura.leilao.e2e.pages;
+package br.com.alura.leilao.system.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -17,7 +17,6 @@ public class LoginPage {
 
     public LeiloesPage realizaLoginCom(String nome, String senha) {
     	
-    	
     	driver.get(URL_LOGIN_PAGE);
 
         WebElement txtNome = driver.findElement(By.name("username"));
@@ -27,9 +26,7 @@ public class LoginPage {
         txtEmail.sendKeys(senha);
 
         txtNome.submit();
-        
-        System.out.println(driver.getCurrentUrl());
-        
+                
         return new LeiloesPage(driver);
 
     }

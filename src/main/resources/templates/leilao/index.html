@@ -16,7 +16,6 @@
 			<th scope="col">Data de abertura</th>
 			<th scope="col">Valor inicial</th>
 			<th scope="col">Usuario</th>
-			<th scope="col">Usado?</th>
 			<th scope="col"></th>
 			<th scope="col"></th>
 		</tr>
@@ -25,7 +24,6 @@
 				<td th:text="${#temporals.format(leilao.dataAbertura, 'dd/MM/yyyy')}">10/02/2020</td>
 				<td th:text="${leilao.valorInicial}">Valor Inicial</td>
 				<td th:text="${leilao.usuario.nome}">Nome do Usuario</td>
-				<td th:text="${leilao.usado?'Sim':'Não'}">Sim ou não</td>
 				<td sec:authorize="isAuthenticated()" th:if="${leilao.usuario.nome != usuarioLogado.name}">
 					<a class="btn btn-block btn-info" th:href="@{'/leiloes/' + ${leilao.id}}" >dar lance</a>
 				</td>

@@ -42,8 +42,6 @@ public class Leilao {
 	@NotNull
 	private LocalDate dataAbertura;
 
-	private boolean usado;
-
 	@OneToMany(mappedBy = "leilao")
 	private List<Lance> lances = new ArrayList<>();
 
@@ -55,11 +53,10 @@ public class Leilao {
 		this.nome = nome;
 	}
 	
-	public Leilao(@NotBlank String nome, @NotNull @DecimalMin("0.1") BigDecimal valorInicial, @NotNull LocalDate dataAbertura, Boolean usado) {
+	public Leilao(@NotBlank String nome, @NotNull @DecimalMin("0.1") BigDecimal valorInicial, @NotNull LocalDate dataAbertura) {
 		this.nome = nome;
 		this.valorInicial = valorInicial;
 		this.dataAbertura = dataAbertura;
-		this.usado = usado;
 	}
 	
 
@@ -126,20 +123,8 @@ public class Leilao {
 		return usuario;
 	}
 
-	public boolean isUsado() {
-		return usado;
-	}
-
-	public void setUsado(boolean usado) {
-		this.usado = usado;
-	}
-
 	public void setLances(List<Lance> lances) {
 		this.lances = lances;
-	}
-
-	public void marcaComoUsado() {
-		this.usado = true;
 	}
 
 	public boolean propoe(Lance lanceAtual) {
