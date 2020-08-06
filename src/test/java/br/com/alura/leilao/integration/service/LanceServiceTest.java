@@ -1,4 +1,4 @@
-package br.com.alura.leilao.service;
+package br.com.alura.leilao.integration.service;
 
 import java.math.BigDecimal;
 
@@ -19,6 +19,7 @@ import br.com.alura.leilao.mudi.dto.NovoLanceDto;
 import br.com.alura.leilao.repositories.LanceRepository;
 import br.com.alura.leilao.repositories.LeilaoRepository;
 import br.com.alura.leilao.repositories.UsuarioRepository;
+import br.com.alura.leilao.service.LanceService;
 
 @SpringJUnitConfig
 public class LanceServiceTest {

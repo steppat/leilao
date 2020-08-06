@@ -1,4 +1,4 @@
-package br.com.alura.leilao.controller;
+package br.com.alura.leilao.integration.controller;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;

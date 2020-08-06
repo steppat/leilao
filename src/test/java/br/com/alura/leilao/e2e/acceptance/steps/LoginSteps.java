@@ -1,0 +1,61 @@
+package br.com.alura.leilao.e2e.acceptance.steps;
+
+import org.junit.Assert;
+
+import br.com.alura.leilao.e2e.pages.LoginPage;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
+import io.cucumber.java.pt.Dado;
+import io.cucumber.java.pt.Entao;
+import io.cucumber.java.pt.Quando;
+
+public class LoginSteps {
+	
+	private WebAppUtil webApp;
+	private LoginPage loginPage;
+	
+	
+	@Before
+	public void setup() {
+		this.webApp = new WebAppUtil();
+		this.webApp.seed();
+	}
+	
+	
+	
+	@Dado("o usuario valido")
+	public void o_usuario_valido() {
+		this.loginPage = webApp.getLoginPage();
+	}
+
+	@Quando("realiza login")
+	public void realiza_login() {
+		this.loginPage.realizaLogin();
+	}
+	
+	@Entao("é redirecionado para a pagina de leiloes")
+	public void é_redirecionado_a_pagina_de_leiloes() {
+		Assert.assertTrue(this.loginPage.estaNaPaginaDeLeiloes());
+	}
+
+	
+	
+	@Dado("o usuario invalido")
+	public void o_usuario_invalido() {
+		loginPage = webApp.getLoginPage();
+	}
+
+	@Quando("tenta se logar")
+	public void tenta_se_logar() {
+		this.loginPage.realizaLoginCom("usuario", "semsenha");
+	}
+	@Entao("continua na página de login")
+	public void continua_na_página_de_login() {
+	    Assert.assertTrue(this.loginPage.estaNaPaginaDeLoginComErro());
+	}
+	
+	@After
+	public void tearDown() {
+		webApp.cleanUp();
+	}
+}

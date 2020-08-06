@@ -1,4 +1,4 @@
-package br.com.alura.leilao.system;
+package br.com.alura.leilao.e2e.selenium;
 
 import java.util.concurrent.TimeUnit;
 

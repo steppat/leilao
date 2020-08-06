@@ -1,4 +1,4 @@
-package br.com.alura.leilao.system.pages;
+package br.com.alura.leilao.e2e.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -35,5 +35,9 @@ public class LoginPage {
 
 	public boolean estaNaPaginaDeLeiloes() {
 		return this.driver.getCurrentUrl().endsWith("/leiloes");
+	}
+
+	public boolean estaNaPaginaDeLoginComErro() {
+		return this.driver.getCurrentUrl().endsWith("/login?error");
 	}
 }

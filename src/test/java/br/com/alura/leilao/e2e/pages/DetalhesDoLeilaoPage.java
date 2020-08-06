@@ -1,4 +1,4 @@
-package br.com.alura.leilao.system.pages;
+package br.com.alura.leilao.e2e.pages;
 
 import java.util.List;
 

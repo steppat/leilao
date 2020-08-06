@@ -1,4 +1,4 @@
-package br.com.alura.leilao.controller;
+package br.com.alura.leilao.integration.controller;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

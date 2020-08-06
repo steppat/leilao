@@ -1,9 +1,11 @@
-package br.com.alura.leilao.system.pages;
+package br.com.alura.leilao.e2e.pages;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class LeiloesPage {
 
@@ -38,5 +40,12 @@ public class LeiloesPage {
 	public AlterarLeilaoPage visitaPaginaParaAltearLeilao() {
 		driver.findElement(By.linkText("editar")).click();
 		return new AlterarLeilaoPage(driver);
+	}
+
+	public DetalhesDoLeilaoPage visitaPaginaParaDarLanceNoLeilaoDo(String donoDoLeilao) {
+		List<WebElement> trs = driver.findElements(By.xpath("//table[@class='table table-hover']/tbody/tr"));
+		System.out.println(trs);
+		return new DetalhesDoLeilaoPage(driver);
+		
 	}
 }

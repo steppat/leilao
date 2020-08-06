@@ -1,4 +1,4 @@
-package br.com.alura.leilao.repository;
+package br.com.alura.leilao.integration.repository;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.ActiveProfiles;
 
-import br.com.alura.leilao.controller.BaseTest;
+import br.com.alura.leilao.integration.controller.BaseTest;
 import br.com.alura.leilao.model.Usuario;
 import br.com.alura.leilao.repositories.UsuarioRepository;
 

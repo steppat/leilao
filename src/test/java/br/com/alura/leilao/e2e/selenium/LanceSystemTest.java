@@ -1,13 +1,13 @@
-package br.com.alura.leilao.system;
+package br.com.alura.leilao.e2e.selenium;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import br.com.alura.leilao.system.pages.DetalhesDoLeilaoPage;
-import br.com.alura.leilao.system.pages.LeiloesPage;
-import br.com.alura.leilao.system.pages.LoginPage;
+import br.com.alura.leilao.e2e.pages.DetalhesDoLeilaoPage;
+import br.com.alura.leilao.e2e.pages.LeiloesPage;
+import br.com.alura.leilao.e2e.pages.LoginPage;
 
 public class LanceSystemTest extends SystemTestBase{
 	
