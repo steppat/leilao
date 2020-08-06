@@ -155,7 +155,7 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<configuration>
 					<skipTests>true</skipTests>
-				</configuration>
+    			</configuration>
 				<executions>
 					<execution>
 						<id>unit-tests</id>
@@ -186,6 +186,10 @@
 							<includes>
 								<include>br.com.alura.leilao.integration.*.*Test</include>
 							</includes>
+							<excludes>
+								<exclude>br.com.alura.leilao.e2e.*.*Test</exclude>
+								<exclude>br.com.alura.leilao.model.*Test</exclude>								
+							</excludes>
 						</configuration>
 					</execution>
 				</executions>
@@ -211,12 +215,12 @@
 
 	<profiles>
 		<profile>
-			<id>dev</id>
+			<id>test</id>
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
-				<spring.profiles.active>dev</spring.profiles.active>
+				<spring.profiles.active>test</spring.profiles.active>
 			</properties>
 		</profile>
 		<profile>

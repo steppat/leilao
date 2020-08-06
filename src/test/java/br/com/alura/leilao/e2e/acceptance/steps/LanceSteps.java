@@ -1,9 +1,11 @@
 package br.com.alura.leilao.e2e.acceptance.steps;
 
+import org.junit.Assert;
+
+import br.com.alura.leilao.e2e.pages.DetalhesDoLeilaoPage;
 import br.com.alura.leilao.e2e.pages.LeiloesPage;
 import br.com.alura.leilao.e2e.pages.LoginPage;
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
+import br.com.alura.leilao.e2e.pages.NovoLeilaoPage;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.Entao;
 import io.cucumber.java.pt.Quando;
@@ -12,54 +14,58 @@ public class LanceSteps {
 
 	private WebAppUtil webApp;
 	private LoginPage loginPage;
-	private LeiloesPage leilaoPage; 
+	private LeiloesPage leiloesPage;
+	private DetalhesDoLeilaoPage detalhesPage; 
 	
-	@Before
+//	@Before
 	public void setup() {
 		this.webApp = new WebAppUtil();
 		this.webApp.seed();
 	}
 	
-	@After
+//	@After
 	public void tearDown() {
 		webApp.cleanUp();
 	}
 	
-	
-	
 	@Dado("o usuario {string} logado")
-	public void o_usuario_e_um_do_usuario(String nomeUsuario) {
+	public void o_usuario_e_um_do_usuario(String nomeUsuario) throws Exception {
+		this.setup();
 		this.loginPage = this.webApp.getLoginPage();
-		leilaoPage = this.loginPage.realizaLoginCom(nomeUsuario, "pass");
+		leiloesPage = this.loginPage.realizaLoginCom(nomeUsuario, "pass");
+		Thread.sleep(2000);
 	}
 
-	@Quando("quando ele dar um lance valido no leileo do {string}")
-	public void quando_dar_um_lance_valido(String donoDoLeilao) {
-		this.leilaoPage.visitaPaginaParaDarLanceNoLeilaoDo(donoDoLeilao);
+	@Quando("ele dá um lance valido no leilao do {string}")
+	public void quando_dar_um_lance_valido(String donoDoLeilao) throws Exception {
+		this.detalhesPage = this.leiloesPage.visitaPaginaDoLeilaoDo(donoDoLeilao);
+		this.detalhesPage.darLance("150");
 	}
 
 	@Entao("o lance é aceito")
 	public void o_lance_é_aceito_pelo_leilao() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		Assert.assertTrue(this.detalhesPage.existeLance("150"));
+		this.tearDown();
 	}
-
+	
+	//------------------------------------------
+	
 	@Dado("o usuario {string} que criou um {string}")
-	public void o_usuario_que_criou_um(String string, String string2) {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+	public void o_usuario_que_criou_um(String dono, String nomeLeilao) {
+		this.setup();
+		this.leiloesPage = this.webApp.getLoginPage().realizaLoginCom(dono, "pass");
+		NovoLeilaoPage novoLeilaoPage = this.leiloesPage.visitaPaginaParaCriarUmNovoLeilao();
+		this.leiloesPage = novoLeilaoPage.preencheForm(nomeLeilao, "100", "01/12/2019");
 	}
 
-	@Quando("navega para pagina de leiloes")
+	@Quando("ele navega para pagina de leiloes")
 	public void navega_para_pagina_de_leiloes() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
 	}
 
-	@Entao("ele não dar um lance no {string}")
-	public void ele_não_dar_um_lance_no(String string) {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+	@Entao("o {string} não pode dar um lance no leilao criado")
+	public void ele_não_dar_um_lance_no(String dono) {
+		Assert.assertTrue(this.leiloesPage.naoPodeDarLanceNoLeilaoCriado(dono));
+		this.tearDown();
 	}
 
 }

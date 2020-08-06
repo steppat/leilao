@@ -1,11 +1,14 @@
 package br.com.alura.leilao.e2e.pages;
 
-import java.util.List;
+
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LeiloesPage {
 
@@ -15,20 +18,26 @@ public class LeiloesPage {
 	
 	public LeiloesPage(WebDriver driver) {
 		this.driver = driver;
-	    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 
 	public void visita() {
 		driver.get(PAGE_URL);
 	}
 
-	public boolean existe(String nomeProduto, double valor, String usuario) {
+	public boolean existe(String nomeProduto, String valor, String usuario) {
 		return driver.getCurrentUrl().endsWith("/leiloes") && driver.getPageSource().contains(nomeProduto) && 
-				driver.getPageSource().contains(String.valueOf(valor));
+				driver.getPageSource().contains(valor);
 	}
 
 	public NovoLeilaoPage visitaPaginaParaCriarUmNovoLeilao() {
-		driver.findElement(By.linkText("Novo Leilão")).click();
+		
+		WebElement href = driver.findElement(By.id("novo_leilao_link"));
+		
+		WebDriverWait wait = new WebDriverWait(driver,10);
+		wait.until(ExpectedConditions.elementToBeClickable(href));
+		
+		href.click();
+		System.out.println("visitaPaginaParaCriarUmNovoLeilao -> click" );
 		return new NovoLeilaoPage(driver);
 	}
 
@@ -42,10 +51,26 @@ public class LeiloesPage {
 		return new AlterarLeilaoPage(driver);
 	}
 
-	public DetalhesDoLeilaoPage visitaPaginaParaDarLanceNoLeilaoDo(String donoDoLeilao) {
-		List<WebElement> trs = driver.findElements(By.xpath("//table[@class='table table-hover']/tbody/tr"));
-		System.out.println(trs);
-		return new DetalhesDoLeilaoPage(driver);
+	public DetalhesDoLeilaoPage visitaPaginaDoLeilaoDo(String donoDoLeilao) throws Exception {
+		WebElement href = driver.findElement(
+				By.xpath("//table[@class='table table-hover']/tbody/tr/td[contains(text(),'" +donoDoLeilao+ "')]/following-sibling::td/a"));
 		
+		WebDriverWait wait = new WebDriverWait(driver,10);
+		wait.until(ExpectedConditions.elementToBeClickable(href));
+
+		href.click();
+		
+		return new DetalhesDoLeilaoPage(driver);
+	}
+
+	public void esperaCarregar() {
+		WebDriverWait wait = new WebDriverWait(driver,10);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h1[contains(text(),'Todos leilões')]")));
+	}
+
+	public boolean naoPodeDarLanceNoLeilaoCriado(String donoDoLeilao) {
+		WebElement href = driver.findElement(
+				By.xpath("//table[@class='table table-hover']/tbody/tr/td[contains(text(),'" +donoDoLeilao+ "')]/following-sibling::td/a"));
+		return href.getText().contains("editar");
 	}
 }

@@ -1,0 +1,45 @@
+# MARIADB
+# rodar mariadb no windows (a partir da pasta bin do mariadb)
+mysqld.exe --console
+
+# para se conectar com mariadb (a partir da pasta bin do mariadb)
+mysql -u root
+
+create database leilao;
+
+-------
+# DOCKER
+# para subir mariadb com docker (a partir local do docker-compose.yml)
+docker-compose up -d
+
+#login e senha está no docker-compose.yml
+
+#para terminar os services abaixo
+docker-compose down 
+
+http://localhost:8081
+
+------
+# MAVEN
+# rodando testes com maven na linha de comando (default profile é test)
+# apenas testes de unidade
+mvn test
+
+# testes de integracao
+mvn test-integration
+
+# testes end-2-end
+mvn verify
+
+# para alterar o profile
+mvn test -Pprod
+
+# para usar firefox driver (chrome é padrao)
+
+mvn test -Ddriver=firefox
+mvn test -Dcucumber.filter.tags="@smoke and @fast"
+
+
+
+
+ 

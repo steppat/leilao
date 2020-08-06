@@ -18,15 +18,31 @@ public class DetalhesDoLeilaoPage {
 	}
 
 	public void darLance(String valor) {
-		WebElement txtValor = driver.findElement(By.name("valor"));
+		
+		driver.getPageSource();
+		
+		WebElement txtValor = driver.findElement(By.id("valor"));
+		
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		wait.until(ExpectedConditions.visibilityOf(txtValor));
+		
+		txtValor.clear();
 		txtValor.sendKeys(valor);
+		
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnDarLance")));
+		
 		driver.findElement(By.id("btnDarLance")).click();
 	}
 
 	public boolean existeLance(String valor) {
-		return new WebDriverWait(driver, 5)
-				.until(ExpectedConditions
-						.textToBePresentInElementLocated(By.id("lancesDados"), valor ));
+		By locator = By.xpath("//table[@id='lancesDados']//td[contains(.,'" + valor + "')]");
+		
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+		
+		WebElement td = driver.findElement(locator);
+		String result = td.getText();
+		return result != null;
 	}
 	
 	public boolean temApenasUmLance() {

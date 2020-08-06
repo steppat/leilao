@@ -19,16 +19,15 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Profile("test")
 public class WebSecurityConfigProfileTest extends WebSecurityConfigurerAdapter {
 	
-	
 	@Autowired DataSource dataSource;
-
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-			.antMatchers("/leiloes").permitAll()
 			.antMatchers("/banco/**").permitAll()	
-			.antMatchers("/h2-console/**").permitAll();
+			.antMatchers("/h2-console/**").permitAll()
+			.antMatchers("/leiloes").permitAll()
+			.antMatchers("/css/**").permitAll();;
         
 		http.authorizeRequests().anyRequest().authenticated();
 

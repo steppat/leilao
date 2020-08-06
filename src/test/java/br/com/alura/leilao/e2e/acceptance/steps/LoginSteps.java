@@ -15,16 +15,22 @@ public class LoginSteps {
 	private LoginPage loginPage;
 	
 	
-	@Before
+//	@Before
 	public void setup() {
 		this.webApp = new WebAppUtil();
 		this.webApp.seed();
 	}
 	
+//	@After
+	public void tearDown() {
+		webApp.cleanUp();
+	}
 	
+	//----------------------------------------
 	
 	@Dado("o usuario valido")
 	public void o_usuario_valido() {
+		this.setup();
 		this.loginPage = webApp.getLoginPage();
 	}
 
@@ -36,12 +42,15 @@ public class LoginSteps {
 	@Entao("é redirecionado para a pagina de leiloes")
 	public void é_redirecionado_a_pagina_de_leiloes() {
 		Assert.assertTrue(this.loginPage.estaNaPaginaDeLeiloes());
+		this.tearDown();
 	}
 
 	
+	//------------------------------
 	
 	@Dado("o usuario invalido")
 	public void o_usuario_invalido() {
+		this.setup();
 		loginPage = webApp.getLoginPage();
 	}
 
@@ -52,10 +61,7 @@ public class LoginSteps {
 	@Entao("continua na página de login")
 	public void continua_na_página_de_login() {
 	    Assert.assertTrue(this.loginPage.estaNaPaginaDeLoginComErro());
+	    this.tearDown();
 	}
 	
-	@After
-	public void tearDown() {
-		webApp.cleanUp();
-	}
 }

@@ -1,5 +1,7 @@
 package br.com.alura.leilao.security;
 
+import java.util.Locale;
+
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.servlet.LocaleResolver;
+import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 
 @Configuration
 @EnableWebSecurity
@@ -24,7 +28,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-			.antMatchers("/leiloes").permitAll();
+			.antMatchers("/leiloes").permitAll()
+			.antMatchers("/resources/**").permitAll();
         
 		http.authorizeRequests().anyRequest().authenticated();
 		
@@ -64,6 +69,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         authProvider.setUserDetailsService(userDetailsService());
         authProvider.setPasswordEncoder(passwordEncoder());
         return authProvider;
+    }
+    
+    @Bean
+    public LocaleResolver localeResolver(){
+      CookieLocaleResolver resolver = new CookieLocaleResolver();
+      resolver.setDefaultLocale(new Locale("pt", "BR")); 
+      return resolver;
     }
 	
 }

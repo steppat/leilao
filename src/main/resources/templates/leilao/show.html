@@ -53,7 +53,7 @@
 							<td>Usuário</td>
 							<td>Valor</td>
 						</tr>
-						
+						 
 						<tr th:each="lance : ${leilao.lances}">
 							<td scope="row" th:text="${#temporals.format(lance.data, 'dd/MM/yyyy')}">Data</td>
 							<td th:text="${lance.usuario.nome}">Nome do Usuario</td>

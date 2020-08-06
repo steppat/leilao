@@ -1,5 +1,7 @@
 <html>
-	<head th:replace="~{base :: head}"></head>
+	<head th:replace="~{base :: head}">
+		<meta charset="UTF-8">
+	</head>
 	<body>
 		<div th:replace="~{base :: logo}"></div>
 		
@@ -36,7 +38,7 @@
 
 	<br />
 	
-	<a class="btn btn-primary" th:href="@{'/leiloes/new'}" role="button" sec:authorize="isAuthenticated()">Novo Leilão</a>
+	<a class="btn btn-primary" id="novo_leilao_link" th:href="@{'/leiloes/new'}" role="button" sec:authorize="isAuthenticated()">Novo Leilão</a>
 	
 	</div>
 </body>

@@ -8,7 +8,9 @@ import io.cucumber.junit.CucumberOptions;
 
 //junit4
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "classpath:features", plugin = {"pretty", "html:target/cucumber"})
+@CucumberOptions(features = "classpath:features", 
+	plugin = {"pretty", "html:target/cucumber.html"},
+	tags = "@lance")
 public class CucumberAcceptanceTest {
 
 }
