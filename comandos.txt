@@ -7,6 +7,24 @@ mysql -u root
 
 create database leilao;
 
+------
+# MAVEN
+# rodando testes com maven na linha de comando (default profile é test)
+# apenas testes de unidade
+mvn test
+
+# testes de integracao
+mvn test-integration
+
+# para alterar o profile
+mvn test -Pprod
+
+# para usar chrome driver (firefox é padrao)
+
+mvn integration-test -Ddriver=chrome
+mvn integration-test -Dcucumber.filter.tags="@login or @lance"
+
+
 -------
 # DOCKER
 # para subir mariadb com docker (a partir local do docker-compose.yml)
@@ -18,28 +36,5 @@ docker-compose up -d
 docker-compose down 
 
 http://localhost:8081
-
-------
-# MAVEN
-# rodando testes com maven na linha de comando (default profile é test)
-# apenas testes de unidade
-mvn test
-
-# testes de integracao
-mvn test-integration
-
-# testes end-2-end
-mvn verify
-
-# para alterar o profile
-mvn test -Pprod
-
-# para usar firefox driver (chrome é padrao)
-
-mvn test -Ddriver=firefox
-mvn test -Dcucumber.filter.tags="@smoke and @fast"
-
-
-
 
  
