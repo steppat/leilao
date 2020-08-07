@@ -1,0 +1,15 @@
+aula 1
+
+
+
+
+aula2
+
+@leilao
+Funcionalidade: Propondo um lance ao leilao
+  
+  Cenario: Pode dar lances
+    Dado o usuario "fulano"
+    E um leilao do usuario "beltrano"
+    Quando "fulano" dá um lance no leilao do "beltrano"
+    Entao o lance é adicionado no leilao
