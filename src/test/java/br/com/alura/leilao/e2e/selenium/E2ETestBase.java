@@ -7,8 +7,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 import br.com.alura.leilao.e2e.pages.WebDriverFactory;
 
@@ -33,14 +31,14 @@ public class E2ETestBase {
 	
 	@BeforeEach
 	public void setUp() {
-        driver.get("http://localhost:8080/banco/seed");
+        driver.get("http://localhost:8080/db/seed");
 	}
 
 
 
 	@AfterEach
 	public void cleanUp() {
-        driver.get("http://localhost:8080/banco/limpa");
+        driver.get("http://localhost:8080/db/limpa");
 		driver.manage().deleteAllCookies();
 	}
 

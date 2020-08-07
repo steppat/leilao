@@ -18,7 +18,7 @@ import br.com.alura.leilao.repositories.UsuarioRepository;
 @SpringBootTest
 @AutoConfigureMockMvc(addFilters = false)
 @ActiveProfiles("test") 
-public class LeiloesControllerTest extends BaseTest {
+public class LeiloesControllerTest extends TestBase {
 
 	@Autowired
 	private MockMvc mockMvc;

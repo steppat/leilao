@@ -8,7 +8,7 @@ import java.util.List;
 import br.com.alura.leilao.model.Leilao;
 import br.com.alura.leilao.model.Usuario;
 
-public class BaseTest {
+public class TestBase {
 
 	public List<Usuario> getUsuariosFulanoEBeltrano() {
 		Usuario fulano = getUsuarioFulano();

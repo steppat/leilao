@@ -7,13 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.ActiveProfiles;
 
-import br.com.alura.leilao.integration.controller.BaseTest;
+import br.com.alura.leilao.integration.controller.TestBase;
 import br.com.alura.leilao.model.Usuario;
 import br.com.alura.leilao.repositories.UsuarioRepository;
 
 @DataJpaTest
 @ActiveProfiles("test") 
-public class UsuarioRepositoryTest extends BaseTest{
+public class UsuarioRepositoryTest extends TestBase{
 
 	@Autowired
 	UsuarioRepository usuarios;

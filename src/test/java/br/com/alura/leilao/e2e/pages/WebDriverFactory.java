@@ -24,13 +24,13 @@ public class WebDriverFactory {
 
 	private  WebDriver initChromeDriver() {
 		System.setProperty("webdriver.chrome.driver",
-				"/Users/nico/Documents/dev/workspaces/bdd/leilao/drivers/chromedriver");
+				"C:\\Users\\Rolf\\curso-bdd\\workspace\\leilao\\drivers\\chromedriver.exe");
 		return new ChromeDriver();
 	}
 
 	private  WebDriver initFirefoxDriver() {
 		System.setProperty("webdriver.gecko.driver",
-				"/Users/nico/Documents/dev/workspaces/bdd/leilao/drivers/geckodriver");
+				"C:\\Users\\Rolf\\curso-bdd\\workspace\\leilao\\drivers\\geckodriver.exe");
 		return new FirefoxDriver();
 	}
 }
