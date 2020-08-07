@@ -5,6 +5,7 @@ import org.junit.Assert;
 import br.com.alura.leilao.e2e.pages.DetalhesDoLeilaoPage;
 import br.com.alura.leilao.e2e.pages.LeiloesPage;
 import br.com.alura.leilao.e2e.pages.LoginPage;
+import br.com.alura.leilao.e2e.pages.Browser;
 import br.com.alura.leilao.e2e.pages.NovoLeilaoPage;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.Entao;
@@ -12,27 +13,27 @@ import io.cucumber.java.pt.Quando;
 
 public class LanceSteps {
 
-	private WebAppUtil webApp;
+	private Browser webApp;
 	private LoginPage loginPage;
 	private LeiloesPage leiloesPage;
 	private DetalhesDoLeilaoPage detalhesPage; 
 	
 //	@Before
 	public void setup() {
-		this.webApp = new WebAppUtil();
+		this.webApp = new Browser();
 		this.webApp.seed();
 	}
 	
 //	@After
 	public void tearDown() {
-		webApp.cleanUp();
+		webApp.clean();
 	}
 	
 	@Dado("o usuario {string} logado")
 	public void o_usuario_e_um_do_usuario(String nomeUsuario) throws Exception {
 		this.setup();
 		this.loginPage = this.webApp.getLoginPage();
-		leiloesPage = this.loginPage.realizaLoginCom(nomeUsuario, "pass");
+		leiloesPage = this.loginPage.realizaLoginComo(nomeUsuario, "pass");
 		Thread.sleep(2000);
 	}
 
@@ -53,7 +54,7 @@ public class LanceSteps {
 	@Dado("o usuario {string} que criou um {string}")
 	public void o_usuario_que_criou_um(String dono, String nomeLeilao) {
 		this.setup();
-		this.leiloesPage = this.webApp.getLoginPage().realizaLoginCom(dono, "pass");
+		this.leiloesPage = this.webApp.getLoginPage().realizaLoginComo(dono, "pass");
 		NovoLeilaoPage novoLeilaoPage = this.leiloesPage.visitaPaginaParaCriarUmNovoLeilao();
 		this.leiloesPage = novoLeilaoPage.preencheForm(nomeLeilao, "100", "01/12/2019");
 	}

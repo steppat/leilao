@@ -17,7 +17,7 @@ public class LeiloesE2ETest extends E2ETestBase{
 	@BeforeEach
 	void setup() {
 		LoginPage loginPage = new LoginPage(getDriver());
-		leiloesPage = loginPage.realizaLogin();		
+		leiloesPage = loginPage.realizaLoginComoFulano();		
 	}
 
 	@Test

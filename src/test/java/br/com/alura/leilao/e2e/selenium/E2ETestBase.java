@@ -10,6 +10,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import br.com.alura.leilao.e2e.pages.WebDriverFactory;
+
 public class E2ETestBase {
 
 	private static WebDriver driver;

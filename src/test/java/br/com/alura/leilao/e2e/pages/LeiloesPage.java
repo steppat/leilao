@@ -1,9 +1,6 @@
 package br.com.alura.leilao.e2e.pages;
 
 
-import java.time.Duration;
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -31,13 +28,13 @@ public class LeiloesPage {
 
 	public NovoLeilaoPage visitaPaginaParaCriarUmNovoLeilao() {
 		
+		WebDriverWait wait = new WebDriverWait(driver,5);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("novo_leilao_link")));
+		
 		WebElement href = driver.findElement(By.id("novo_leilao_link"));
-		
-		WebDriverWait wait = new WebDriverWait(driver,10);
 		wait.until(ExpectedConditions.elementToBeClickable(href));
-		
 		href.click();
-		System.out.println("visitaPaginaParaCriarUmNovoLeilao -> click" );
+
 		return new NovoLeilaoPage(driver);
 	}
 
@@ -52,10 +49,16 @@ public class LeiloesPage {
 	}
 
 	public DetalhesDoLeilaoPage visitaPaginaDoLeilaoDo(String donoDoLeilao) throws Exception {
-		WebElement href = driver.findElement(
-				By.xpath("//table[@class='table table-hover']/tbody/tr/td[contains(text(),'" +donoDoLeilao+ "')]/following-sibling::td/a"));
+		WebDriverWait wait = new WebDriverWait(driver,5);
 		
-		WebDriverWait wait = new WebDriverWait(driver,10);
+		String xpath = "//table[@class='table table-hover']/tbody/tr/td[contains(text(),'" +
+						donoDoLeilao+ "')]/following-sibling::td/a";
+
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
+		
+		WebElement href = driver.findElement(
+				By.xpath(xpath));
+		
 		wait.until(ExpectedConditions.elementToBeClickable(href));
 
 		href.click();
@@ -64,7 +67,7 @@ public class LeiloesPage {
 	}
 
 	public void esperaCarregar() {
-		WebDriverWait wait = new WebDriverWait(driver,10);
+		WebDriverWait wait = new WebDriverWait(driver,5);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h1[contains(text(),'Todos leilões')]")));
 	}
 

@@ -16,18 +16,23 @@ public class NovoLeilaoPage {
 
     public LeiloesPage preencheForm(String nome, String valor, String data) {
     	
-    	WebDriverWait wait = new WebDriverWait(driver, 10);
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.name("dataAbertura")));
+//    	WebDriverWait wait = new WebDriverWait(driver, 10);
+//		wait.until(ExpectedConditions.presenceOfElementLocated(By.name("dataAbertura")));
 
-        WebElement txtNome = driver.findElement(By.name("nome"));
-        WebElement txtValor = driver.findElement(By.name("valorInicial"));
-        WebElement txtData = driver.findElement(By.name("dataAbertura"));
-
+        WebElement txtNome = driver.findElement(By.id("nome"));
+        txtNome.clear();
         txtNome.sendKeys(nome);
+        
+        WebElement txtValor = driver.findElement(By.id("valorInicial"));
+        txtValor.clear();
         txtValor.sendKeys(valor);
+        
+        WebElement txtData = driver.findElement(By.id("dataAbertura"));
+        txtData.clear();
         txtData.sendKeys(data);
 
-        txtNome.submit();
+        WebElement button = driver.findElement(By.id("button-submit"));							
+        button.submit();
         
         return new LeiloesPage(driver);
     }

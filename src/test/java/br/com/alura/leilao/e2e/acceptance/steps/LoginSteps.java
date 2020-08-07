@@ -3,6 +3,7 @@ package br.com.alura.leilao.e2e.acceptance.steps;
 import org.junit.Assert;
 
 import br.com.alura.leilao.e2e.pages.LoginPage;
+import br.com.alura.leilao.e2e.pages.Browser;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.pt.Dado;
@@ -11,19 +12,19 @@ import io.cucumber.java.pt.Quando;
 
 public class LoginSteps {
 	
-	private WebAppUtil webApp;
+	private Browser webApp;
 	private LoginPage loginPage;
 	
 	
 //	@Before
 	public void setup() {
-		this.webApp = new WebAppUtil();
+		this.webApp = new Browser();
 		this.webApp.seed();
 	}
 	
 //	@After
 	public void tearDown() {
-		webApp.cleanUp();
+		webApp.clean();
 	}
 	
 	//----------------------------------------
@@ -36,7 +37,7 @@ public class LoginSteps {
 
 	@Quando("realiza login")
 	public void realiza_login() {
-		this.loginPage.realizaLogin();
+		this.loginPage.realizaLoginComoFulano();
 	}
 	
 	@Entao("é redirecionado para a pagina de leiloes")
@@ -56,7 +57,7 @@ public class LoginSteps {
 
 	@Quando("tenta se logar")
 	public void tenta_se_logar() {
-		this.loginPage.realizaLoginCom("usuario", "semsenha");
+		this.loginPage.realizaLoginComo("usuario", "semsenha");
 	}
 	@Entao("continua na página de login")
 	public void continua_na_página_de_login() {

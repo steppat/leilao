@@ -1,7 +1,5 @@
 package br.com.alura.leilao.e2e.pages;
 
-import java.time.Duration;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,7 +16,7 @@ public class LoginPage {
         this.driver = driver;
     }
 
-    public LeiloesPage realizaLoginCom(String nome, String senha) {
+    public LeiloesPage realizaLoginComo(String nome, String senha) {
     	driver.get(URL_LOGIN_PAGE);
 
         WebElement txtNome = driver.findElement(By.name("username"));
@@ -32,8 +30,8 @@ public class LoginPage {
         return new LeiloesPage(driver);
     }
     
-    public LeiloesPage realizaLogin() {
-    	return realizaLoginCom("fulano", "pass");
+    public LeiloesPage realizaLoginComoFulano() {
+    	return realizaLoginComo("fulano", "pass");
     }
 
 	public boolean estaNaPaginaDeLeiloes() {

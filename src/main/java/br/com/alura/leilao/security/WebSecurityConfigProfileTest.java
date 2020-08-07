@@ -24,7 +24,7 @@ public class WebSecurityConfigProfileTest extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-			.antMatchers("/banco/**").permitAll()	
+			.antMatchers("/db/**").permitAll()	
 			.antMatchers("/h2-console/**").permitAll()
 			.antMatchers("/leiloes").permitAll()
 			.antMatchers("/css/**").permitAll();;
