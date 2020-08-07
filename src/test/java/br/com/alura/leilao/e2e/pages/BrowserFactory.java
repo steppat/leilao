@@ -5,7 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
-public class WebDriverFactory {
+public class BrowserFactory {
 
 //  Documentação
 //	http://chromedriver.storage.googleapis.com/index.html
@@ -25,13 +25,13 @@ public class WebDriverFactory {
 
 	private  WebDriver initChromeDriver() {
 		System.setProperty("webdriver.chrome.driver",
-				"C:\\Users\\Rolf\\curso-bdd\\workspace\\leilao\\drivers\\chromedriver.exe");
+				"C:\\Users\\stepp\\Desktop\\curso-bdd\\workspace\\leilao\\drivers\\chromedriver.exe");
 		return new ChromeDriver();
 	}
 
 	private  WebDriver initFirefoxDriver() {
 		System.setProperty("webdriver.gecko.driver",
-				"C:\\Users\\Rolf\\curso-bdd\\workspace\\leilao\\drivers\\geckodriver.exe");
+				"C:\\Users\\stepp\\Desktop\\curso-bdd\\workspace\\leilao\\drivers\\geckodriver.exe");
 		return new FirefoxDriver();
 	}
 }

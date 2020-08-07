@@ -9,7 +9,7 @@ public class Browser {
 	private WebDriver driver;
 
 	public Browser() {
-		this.driver = new WebDriverFactory().createWebDriver();
+		this.driver = new BrowserFactory().createWebDriver();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 

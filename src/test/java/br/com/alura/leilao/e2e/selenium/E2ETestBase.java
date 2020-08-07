@@ -8,7 +8,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 
-import br.com.alura.leilao.e2e.pages.WebDriverFactory;
+import br.com.alura.leilao.e2e.pages.BrowserFactory;
 
 public class E2ETestBase {
 
@@ -24,7 +24,7 @@ public class E2ETestBase {
 
 	@BeforeAll
 	public static void setUpAll() {
-		driver = new WebDriverFactory().createWebDriver();
+		driver = new BrowserFactory().createWebDriver();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 	

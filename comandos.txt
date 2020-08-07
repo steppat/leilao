@@ -1,5 +1,12 @@
+# spring profile arg
+-Dspring.profiles.active=test
+
+# ----------------------------------
+
 # MARIADB
+# https://downloads.mariadb.com/MariaDB/
 # rodar mariadb no windows (a partir da pasta bin do mariadb)
+
 mysqld.exe --console
 
 # para se conectar com mariadb (a partir da pasta bin do mariadb)
@@ -8,7 +15,10 @@ mysql -u root
 create database leilao;
 
 ------
+
 # MAVEN
+# https://maven.apache.org/download.cgi
+
 # rodando testes com maven na linha de comando (default profile é test)
 # apenas testes de unidade
 mvn test
@@ -24,8 +34,8 @@ mvn test -Pprod
 mvn integration-test -Ddriver=chrome
 mvn integration-test -Dcucumber.filter.tags="@login or @lance"
 
-
 -------
+
 # DOCKER
 # para subir mariadb com docker (a partir local do docker-compose.yml)
 docker-compose up -d
